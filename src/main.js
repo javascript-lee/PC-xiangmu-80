@@ -10,9 +10,8 @@ import router from '@/router'
 
 import axios from 'axios'
 Vue.prototype.$http = axios
-
-Vue.config.productionTip = false
 Vue.use(ElementUI)
+Vue.config.productionTip = false
 
 new Vue({
   router,

@@ -2,10 +2,10 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '@/views/login'
 
-import Welcome from '../views/welcome/idnex.vue'
-import Home from '../views/hoem/index.vue'
+import Welcome from '@/views/welcome'
+import Home from '@/views/hoem'
 
-import Howd from '../views/404/index.vue'
+import Howd from '@/views/404'
 Vue.use(VueRouter)
 
 const router = new VueRouter({
