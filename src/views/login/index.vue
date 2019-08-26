@@ -3,7 +3,7 @@
         <el-card class="my-card">
             <img src="../../assets/images/logo_index.png" alt="">
             <el-form ref="loginForm" :model="loginForm" :rules="ruleForm" status-icon>
-            <el-form-item prop="moblie">
+            <el-form-item prop="mobile">
                 <el-input v-model="loginForm.mobile" placeholder="请输入手机号"></el-input>
             </el-form-item>
              <el-form-item prop="code">
@@ -56,6 +56,7 @@ export default {
 
             .then(res => {
               this.$router.push('/')
+              console.log(res)
             })
             .catch(() => {
               this.$message.error('手机号或者验证码错误')
