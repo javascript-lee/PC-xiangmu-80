@@ -3,8 +3,8 @@
         <el-card class="my-card">
             <img src="../../assets/images/logo_index.png" alt="">
             <el-form ref="loginForm" :model="loginForm" :rules="ruleForm" status-icon>
-            <el-form-item prop="moblie">
-                <el-input v-model="loginForm.moblie" placeholder="请输入手机号"></el-input>
+            <el-form-item prop="mobile">
+                <el-input v-model="loginForm.mobile" placeholder="请输入手机号"></el-input>
             </el-form-item>
              <el-form-item prop="code">
                 <el-input v-model="loginForm.code" placeholder="请输入验证码" style="width:236px;margin-right:10px;"></el-input>
@@ -33,11 +33,11 @@ export default {
     }
     return {
       loginForm: {
-        moblie: '13455555555',
+        mobile: '13455555555',
         code: '246810'
       },
       ruleForm: {
-        moblie: [
+        mobile: [
           { required: true, message: '请输入手机号', trigger: 'blur' },
           { validator: checkForm, trigger: 'change' }
         ],
@@ -56,6 +56,7 @@ export default {
 
             .then(res => {
               this.$router.push('/')
+              console.log(res)
             })
             .catch(() => {
               this.$message.error('手机号或者验证码错误')
