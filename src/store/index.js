@@ -2,7 +2,7 @@ const KEY = 'hm-toutia-8080-xiangmu'
 
 export default {
   // 存储用户
-  setUesr (uesr) {
+  setUser (uesr) {
     const jsonStr = JSON.stringify(uesr)
     window.sessionStorage.setItem(KEY, jsonStr)
   },

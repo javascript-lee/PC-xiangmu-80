@@ -22,7 +22,7 @@
 </template>
 
 <script>
-
+import store from '@/store'
 export default {
   data () {
     const checkForm = (rule, value, callback) => {
@@ -50,17 +50,26 @@ export default {
   },
   methods: {
     login () {
-      this.$refs.loginForm.validate((valid) => {
+      this.$refs.loginForm.validate(async valid => {
         if (valid) {
-          this.$http.post('http://ttapi.research.itcast.cn/mp/v1_0/authorizations', this.loginForm)
+          try {
+            const { data: { data } } = await this.$http.post('authorizations', this.loginForm)
+            store.setUser(data)
+            this.$router.push('/')
+          } catch (e) {
+            this.$message.error('手机号或者验证码错误')
+          }
 
-            .then(res => {
-              this.$router.push('/')
-              console.log(res)
-            })
-            .catch(() => {
-              this.$message.error('手机号或者验证码错误')
-            })
+          //     this.$http.post('http://ttapi.research.itcast.cn/mp/v1_0/authorizations', this.loginForm)
+
+          //       .then(res => {
+          //         store.setUser(res.data.data)
+          //         this.$router.push('/')
+          //         // console.log(res)
+          //       })
+          //       .catch(() => {
+          //         this.$message.error('手机号或者验证码错误')
+          //       })
         }
       })
     }
